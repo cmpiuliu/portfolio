@@ -3,9 +3,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -24,6 +21,7 @@ public class LoginPage {
     private final By userNameField = By.id("user-name");
     private final By passwordField = By.id("password");
     private final By loginButton = By.id("login-button");
+    private final By errorMessage = By.xpath("//*[@id='login_button_container']/div/form/h3");
 
 
     public void setUserNameField(String username) {
@@ -47,5 +45,9 @@ public class LoginPage {
         setPasswordField(password);
     }
 
+    public String getErrorMessage() {
+        wait.until(ExpectedConditions.elementToBeClickable(errorMessage));
+        return driver.findElement(errorMessage).getText();
+    }
 
 }

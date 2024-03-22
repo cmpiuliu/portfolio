@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class InventoryPage {
@@ -23,7 +23,7 @@ public class InventoryPage {
     By burgerMenuButton = By.id("menu_button_container");
     By shoppingCartContainer = By.id("shopping_cart_container");
     By shoppingCartBadgeCounter = By.xpath("//div[@class='shopping_cart_container']//span");
-    By addToCartButton = By.xpath("//button[text()='ADD TO CART']");
+    By sortDropDownButton = By.cssSelector(".product_sort_container");
 
     public String getShoppingCartBadgeCounter() {
         return driver.findElement(shoppingCartBadgeCounter).getText();
@@ -47,11 +47,36 @@ public class InventoryPage {
                 addtoCart.click();
                 break;
             }
-
-            }
-        if (!found) {
-            System.out.println("Desired product not found.");
         }
+        if (!found) {
+            System.out.println(criteria + " desired product not found.");
+        }
+    }
+
+    public void sortBy(String criteria) {
+        //to work case sensitive matters
+        wait.until(ExpectedConditions.elementToBeClickable(sortDropDownButton));
+        driver.findElement(sortDropDownButton).click();
+
+        List<WebElement> sortingOptions = driver.findElements(By.cssSelector(".product_sort_container option"));
+        for (WebElement option : sortingOptions) {
+            if (option.getText().contains(criteria)) {
+                wait.until(ExpectedConditions.elementToBeClickable(option));
+                option.click();
+                break;
+            }
+        }
+    }
+
+    public String test () {
+        List<WebElement> productElements = driver.findElements(By.xpath("//div[@class='inventory_item_name']"));
+        List<String> sortedNames = new ArrayList<>();
+        for (WebElement element : productElements){
+            sortedNames.add(element.getText());
+        }
+        /*List<String> expectedSortedNames = new ArrayList<>(sortedNames);
+        Collections.sort(expectedSortedNames);*/
+        return String.valueOf(sortedNames);
     }
 }
 

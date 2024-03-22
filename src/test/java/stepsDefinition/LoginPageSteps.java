@@ -26,7 +26,7 @@ public class LoginPageSteps {
         driver.get("https://www.saucedemo.com/v1/");
 
     }
-    @When("User enters valid credentials {string}, {string}")
+    @When("User enters credentials {string}, {string}")
     public void userEntersValidCredentials(String username, String password) {
         loginPage.login(username,password);
     }
@@ -39,6 +39,19 @@ public class LoginPageSteps {
     @Then("User is successfully logged in to the landing page")
     public void userIsSuccessfullyLoggedInToTheLandingPage() {
          assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/v1/inventory.html");
+    }
+
+    /*@When("User enters invalid credentials {string}, {string}")
+    public void userEntersInvalidCredentialsStringString(String username, String password) {
+        loginPage.login(username,password);
+    }*/
+
+    @Then("The appropriate error message {string} is displayed")
+    public void theAppropriateErrorMessageIsDisplayed(String expected) {
+        assertEquals(expected,loginPage.getErrorMessage());
+
+        System.out.println(loginPage.getErrorMessage());
+
     }
 }
 
