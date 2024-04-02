@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import pages.InventoryPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -37,19 +38,19 @@ public class InventoryPageSteps {
             sortedNames.add(element.getText());
         }
         List<String> expectedSortedNames = new ArrayList<>(sortedNames);
-        System.out.println(expectedSortedNames);
         switch (criteria) {
             case "Name A to Z":
                 Collections.sort(expectedSortedNames);
                 assertEquals(expectedSortedNames, sortedNames);
-                System.out.println("Expected Names A to Z are: " + expectedSortedNames);
                 System.out.println("Actual Names A to Z are: " + sortedNames);
+                System.out.println("Expected Names A to Z are: " + expectedSortedNames);
                 break;
+
             case "Name Z to A":
                 expectedSortedNames.sort(Collections.reverseOrder());
                 assertEquals(expectedSortedNames, sortedNames);
-                System.out.println("Expected Names Z to A are: " + expectedSortedNames);
                 System.out.println("Actual Names Z to A are: " + sortedNames);
+                System.out.println("Expected Names Z to A are: " + expectedSortedNames);
                 break;
         }
     }

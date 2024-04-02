@@ -41,11 +41,6 @@ public class LoginPageSteps {
          assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/v1/inventory.html");
     }
 
-    /*@When("User enters invalid credentials {string}, {string}")
-    public void userEntersInvalidCredentialsStringString(String username, String password) {
-        loginPage.login(username,password);
-    }*/
-
     @Then("The appropriate error message {string} is displayed")
     public void theAppropriateErrorMessageIsDisplayed(String expected) {
         assertEquals(expected,loginPage.getErrorMessage());

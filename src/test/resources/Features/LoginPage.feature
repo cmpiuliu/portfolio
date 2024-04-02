@@ -1,3 +1,4 @@
+
 Feature: Login Page
 
   Background:
@@ -12,6 +13,7 @@ Feature: Login Page
     When User enters credentials "invalid_user", "invalid_password"
     And Clicks on the Login button
     Then The appropriate error message "Epic sadface: Username and password do not match any user in this service" is displayed
+
 
   Scenario Outline: Verify mandatory fields
     When User enters credentials "<username>", "<password>"
