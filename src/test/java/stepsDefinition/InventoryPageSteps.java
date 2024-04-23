@@ -1,6 +1,7 @@
 package stepsDefinition;
 
 import hooks.Hooks;
+import io.cucumber.java.en.And;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -78,5 +79,15 @@ public class InventoryPageSteps {
                 System.out.println("Expected prices are: " + expectedSortedPrices);
                 break;
         }
+    }
+
+    @When("User clicks on Add to Cart button for the desired product {string}")
+    public void userClicksOnAddToCartButtonForTheDesiredProduct(String criteria) {
+        inventoryPage.addToCartDesiredProduct(criteria);
+    }
+
+    @And("Clicks on the Shopping Cart button")
+    public void clicksOnTheShoppingCartButton() {
+        inventoryPage.clickOnShoppingCartContainer();
     }
 }
