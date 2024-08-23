@@ -28,23 +28,18 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(userNameField));
         driver.findElement(userNameField).sendKeys(username);
     }
-
     public void setPasswordField(String password) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(passwordField));
         driver.findElement(passwordField).sendKeys(password);
     }
-
     public void clickLoginButton() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));
         driver.findElement(loginButton).click();
     }
-
-
     public void login(String username, String password) {
         setUserNameField(username);
         setPasswordField(password);
     }
-
     public String getErrorMessage() {
         wait.until(ExpectedConditions.elementToBeClickable(errorMessage));
         return driver.findElement(errorMessage).getText();

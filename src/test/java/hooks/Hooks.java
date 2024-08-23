@@ -13,7 +13,6 @@ public class Hooks {
 
     @Before
     public static void setUp() {
-        System.out.println("BEFORE");
         ChromeOptions options = new ChromeOptions();
         // Add any desired Chrome options
         options.addArguments("--incognito");

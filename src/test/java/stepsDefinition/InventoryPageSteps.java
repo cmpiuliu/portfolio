@@ -10,7 +10,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,11 +32,7 @@ public class InventoryPageSteps {
 
     @Then("Verify if the alphabetically {string} sorting is accurate")
     public void verifyIfTheAlphabeticallyDescendingSortingIsAccurate(String criteria) {
-        List<WebElement> productElements = driver.findElements(By.xpath("//div[@class='inventory_item_name']"));
-        List<String> sortedNames = new ArrayList<>();
-        for (WebElement element : productElements) {
-            sortedNames.add(element.getText());
-        }
+        List<String> sortedNames = inventoryPage.getProductNames();
         List<String> expectedSortedNames = new ArrayList<>(sortedNames);
         switch (criteria) {
             case "Name A to Z":
@@ -84,10 +79,21 @@ public class InventoryPageSteps {
     @When("User clicks on Add to Cart button for the desired product {string}")
     public void userClicksOnAddToCartButtonForTheDesiredProduct(String criteria) {
         inventoryPage.addToCartDesiredProduct(criteria);
-    }
+            }
 
     @And("Clicks on the Shopping Cart button")
     public void clicksOnTheShoppingCartButton() {
         inventoryPage.clickOnShoppingCartContainer();
+    }
+
+
+    @And("User clicks on Remove button for the desired product {string}")
+    public void userClicksOnRemoveButtonForTheDesiredProduct(String criteria) {
+        inventoryPage.removeFromCartDesiredProduct(criteria);
+    }
+
+    @Then("Verify if the cart items counting badge updates correctly")
+    public void verifyIfTheCartItemsCountingBadgeUpdatesCorrectly() {
+        inventoryPage.verifyIfTheCartItemsCountingBadgeUpdatesCorrectly();
     }
 }

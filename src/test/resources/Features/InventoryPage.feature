@@ -10,7 +10,7 @@ Feature: Inventory Page
     Then Verify if the alphabetically "<sortByName>" sorting is accurate
     Examples:
       | sortByName  |
-      | A to Z |
+      | Z to A |
       | Z to A |
 
   Scenario Outline: Sorting products by price
@@ -21,3 +21,11 @@ Feature: Inventory Page
       | high to low |
       | low to high |
 
+  Scenario: Adding items to the Cart from the product listing page
+      When User clicks on Add to Cart button for the desired product "Onesie"
+      Then Verify if the cart items counting badge updates correctly
+
+  Scenario: Removing Cart items from the product listing page
+      When User clicks on Add to Cart button for the desired product "Onesie"
+      And User clicks on Remove button for the desired product "Onesie"
+      Then Verify if the cart items counting badge updates correctly

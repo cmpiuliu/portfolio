@@ -30,7 +30,7 @@ public class TestClass {
         this.overviewPage = new OverviewPage(driver);
     }
 
-//THANK YOU FOR YOUR ORDER
+
 
     @Test
     public void testStuff() {

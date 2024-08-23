@@ -26,7 +26,6 @@ public class OverviewPage {
         wait.until(ExpectedConditions.elementToBeClickable(finishButton));
         driver.findElement(finishButton).click();
     }
-
     public String getCompleteHeader(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(completeHeader));
         return driver.findElement(completeHeader).getText();

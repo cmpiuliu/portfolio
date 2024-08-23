@@ -6,6 +6,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import static org.junit.Assert.*;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 
@@ -24,6 +26,7 @@ public class LoginPageSteps {
     @Given("The user is on the login page")
     public void the_user_is_on_the_login_page() {
         driver.get("https://www.saucedemo.com/v1/");
+        //assertTrue(driver.findElement(By.cssSelector("login_logo")).isDisplayed());
 
     }
     @When("User enters credentials {string}, {string}")
@@ -44,9 +47,7 @@ public class LoginPageSteps {
     @Then("The appropriate error message {string} is displayed")
     public void theAppropriateErrorMessageIsDisplayed(String expected) {
         assertEquals(expected,loginPage.getErrorMessage());
-
         System.out.println(loginPage.getErrorMessage());
-
     }
 }
 

@@ -12,6 +12,4 @@ Feature: Happy Path
     Then User inserts checkout information
     And Clicks on the Continue button
     And Clicks on the Finish button
-    Then The appropriate successful message 'message' is displayed
-
-
+    Then The appropriate successful message 'THANK YOU FOR YOUR ORDER' is displayed
